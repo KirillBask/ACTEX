@@ -4,9 +4,9 @@ namespace ACTEX.Models
 {
     public class UserType
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public string? Id { get; set; }
+        public string? Name { get; set; }
         [JsonProperty("allow_edit")]
-        public bool AllowEdit { get; set; }
+        public bool? AllowEdit { get; set; }
     }
 }

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ACTEX.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230407215605_UsersDataMigration")]
-    partial class UsersDataMigration
+    [Migration("20230408093549_UsersData")]
+    partial class UsersData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,9 +22,8 @@ namespace ACTEX.Migrations
 
             modelBuilder.Entity("ACTEX.Models.User", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("LastVisitDate")
                         .HasColumnType("TEXT");
@@ -41,8 +40,9 @@ namespace ACTEX.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("TypeId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("TypeId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -51,326 +51,325 @@ namespace ACTEX.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = "1",
                             LastVisitDate = new DateTime(2021, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "User1Login",
                             Name = "Пользователь1",
                             Password = "User1Pass",
-                            TypeId = 1
+                            TypeId = "1"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = "2",
                             LastVisitDate = new DateTime(2021, 7, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "Admin1Login",
                             Name = "Админ1",
                             Password = "Admin1Pass",
-                            TypeId = 2
+                            TypeId = "2"
                         },
                         new
                         {
-                            Id = 3,
+                            Id = "3",
                             LastVisitDate = new DateTime(2021, 5, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "Mod1Login",
                             Name = "Модератор1",
                             Password = "Mod1Pass",
-                            TypeId = 3
+                            TypeId = "3"
                         },
                         new
                         {
-                            Id = 4,
+                            Id = "4",
                             LastVisitDate = new DateTime(2021, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "Test1Login",
                             Name = "Тест1",
                             Password = "Test1Pass",
-                            TypeId = 4
+                            TypeId = "4"
                         },
                         new
                         {
-                            Id = 5,
+                            Id = "5",
                             LastVisitDate = new DateTime(2021, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "Guest1Login",
                             Name = "Гость1",
                             Password = "Guest1Pass",
-                            TypeId = 5
+                            TypeId = "5"
                         },
                         new
                         {
-                            Id = 6,
+                            Id = "6",
                             LastVisitDate = new DateTime(2021, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "User2Login",
                             Name = "Пользователь2",
                             Password = "User2Pass",
-                            TypeId = 1
+                            TypeId = "1"
                         },
                         new
                         {
-                            Id = 7,
+                            Id = "7",
                             LastVisitDate = new DateTime(2021, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "Admin2Login",
                             Name = "Админ2",
                             Password = "Admin2Pass",
-                            TypeId = 2
+                            TypeId = "2"
                         },
                         new
                         {
-                            Id = 8,
+                            Id = "8",
                             LastVisitDate = new DateTime(2021, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "Mod2Login",
                             Name = "Модератор2",
                             Password = "Mod2Pass",
-                            TypeId = 3
+                            TypeId = "3"
                         },
                         new
                         {
-                            Id = 9,
+                            Id = "9",
                             LastVisitDate = new DateTime(2021, 5, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "Test2Login",
                             Name = "Тест2",
                             Password = "Test2Pass",
-                            TypeId = 4
+                            TypeId = "4"
                         },
                         new
                         {
-                            Id = 10,
+                            Id = "10",
                             LastVisitDate = new DateTime(2021, 6, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "Guest2Login",
                             Name = "Гость2",
                             Password = "Guest2Pass",
-                            TypeId = 5
+                            TypeId = "5"
                         },
                         new
                         {
-                            Id = 11,
+                            Id = "11",
                             LastVisitDate = new DateTime(2021, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "User3Login",
                             Name = "Пользователь3",
                             Password = "User3Pass",
-                            TypeId = 1
+                            TypeId = "1"
                         },
                         new
                         {
-                            Id = 12,
+                            Id = "12",
                             LastVisitDate = new DateTime(2021, 5, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "Admin3Login",
                             Name = "Админ3",
                             Password = "Admin3Pass",
-                            TypeId = 2
+                            TypeId = "2"
                         },
                         new
                         {
-                            Id = 13,
+                            Id = "13",
                             LastVisitDate = new DateTime(2021, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "Mod3Login",
                             Name = "Модератор3",
                             Password = "Mod3Pass",
-                            TypeId = 3
+                            TypeId = "3"
                         },
                         new
                         {
-                            Id = 14,
+                            Id = "14",
                             LastVisitDate = new DateTime(2021, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "Test3Login",
                             Name = "Тест3",
                             Password = "Test3Pass",
-                            TypeId = 4
+                            TypeId = "4"
                         },
                         new
                         {
-                            Id = 15,
+                            Id = "15",
                             LastVisitDate = new DateTime(2021, 6, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "Guest3Login",
                             Name = "Гость3",
                             Password = "Guest3Pass",
-                            TypeId = 5
+                            TypeId = "5"
                         },
                         new
                         {
-                            Id = 16,
+                            Id = "16",
                             LastVisitDate = new DateTime(2021, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "andr16",
                             Name = "Андрей",
                             Password = "qwerty",
-                            TypeId = 1
+                            TypeId = "1"
                         },
                         new
                         {
-                            Id = 17,
+                            Id = "17",
                             LastVisitDate = new DateTime(2021, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "serg123",
                             Name = "Сергей",
                             Password = "asdfgh",
-                            TypeId = 5
+                            TypeId = "5"
                         },
                         new
                         {
-                            Id = 18,
+                            Id = "18",
                             LastVisitDate = new DateTime(2021, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "anttoonn",
                             Name = "Антон",
                             Password = "123qwert",
-                            TypeId = 3
+                            TypeId = "3"
                         },
                         new
                         {
-                            Id = 19,
+                            Id = "19",
                             LastVisitDate = new DateTime(2021, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "sasha1997",
                             Name = "Александр",
                             Password = "19970101",
-                            TypeId = 2
+                            TypeId = "2"
                         },
                         new
                         {
-                            Id = 20,
+                            Id = "20",
                             LastVisitDate = new DateTime(2021, 7, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "nat789",
                             Name = "Наталья",
                             Password = "passworddrowssap",
-                            TypeId = 1
+                            TypeId = "1"
                         },
                         new
                         {
-                            Id = 21,
+                            Id = "21",
                             LastVisitDate = new DateTime(2021, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "olggaa",
                             Name = "Ольга",
                             Password = "mypass123",
-                            TypeId = 4
+                            TypeId = "4"
                         },
                         new
                         {
-                            Id = 22,
+                            Id = "22",
                             LastVisitDate = new DateTime(2021, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "max123",
                             Name = "Максим",
                             Password = "pass789",
-                            TypeId = 4
+                            TypeId = "4"
                         },
                         new
                         {
-                            Id = 23,
+                            Id = "23",
                             LastVisitDate = new DateTime(2021, 5, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "pavel546",
                             Name = "Павел",
                             Password = "5tgb4rfv",
-                            TypeId = 5
+                            TypeId = "5"
                         },
                         new
                         {
-                            Id = 24,
+                            Id = "24",
                             LastVisitDate = new DateTime(2021, 6, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "mar1983",
                             Name = "Мария",
                             Password = "123456789",
-                            TypeId = 3
+                            TypeId = "3"
                         },
                         new
                         {
-                            Id = 25,
+                            Id = "25",
                             LastVisitDate = new DateTime(2021, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "oleggelo",
                             Name = "Олег",
                             Password = "drowssap",
-                            TypeId = 1
+                            TypeId = "1"
                         },
                         new
                         {
-                            Id = 26,
+                            Id = "26",
                             LastVisitDate = new DateTime(2021, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "viktorr",
                             Name = "Виктор",
                             Password = "drowssap123",
-                            TypeId = 2
+                            TypeId = "2"
                         },
                         new
                         {
-                            Id = 27,
+                            Id = "27",
                             LastVisitDate = new DateTime(2021, 6, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "alina123",
                             Name = "Алина",
                             Password = "passssap",
-                            TypeId = 5
+                            TypeId = "5"
                         },
                         new
                         {
-                            Id = 28,
+                            Id = "28",
                             LastVisitDate = new DateTime(2021, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "kir1990",
                             Name = "Кирилл",
                             Password = "235423723445",
-                            TypeId = 1
+                            TypeId = "1"
                         },
                         new
                         {
-                            Id = 29,
+                            Id = "29",
                             LastVisitDate = new DateTime(2021, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "alisa82",
                             Name = "Алиса",
                             Password = "zxcvbn",
-                            TypeId = 1
+                            TypeId = "1"
                         },
                         new
                         {
-                            Id = 30,
+                            Id = "30",
                             LastVisitDate = new DateTime(2021, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "viktoria9",
                             Name = "Виктория",
                             Password = "poilkjy",
-                            TypeId = 3
+                            TypeId = "3"
                         },
                         new
                         {
-                            Id = 31,
+                            Id = "31",
                             LastVisitDate = new DateTime(2021, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "nasttsan",
                             Name = "Анастасия",
                             Password = "toppass789",
-                            TypeId = 2
+                            TypeId = "2"
                         },
                         new
                         {
-                            Id = 32,
+                            Id = "32",
                             LastVisitDate = new DateTime(2021, 5, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "georg4",
                             Name = "Георгий",
                             Password = "gfhjkm",
-                            TypeId = 4
+                            TypeId = "4"
                         },
                         new
                         {
-                            Id = 33,
+                            Id = "33",
                             LastVisitDate = new DateTime(2021, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "ilya789",
                             Name = "Илья",
                             Password = "mkjhfg",
-                            TypeId = 3
+                            TypeId = "3"
                         },
                         new
                         {
-                            Id = 34,
+                            Id = "34",
                             LastVisitDate = new DateTime(2021, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "anna3",
                             Name = "Анна",
                             Password = "trefmpomsd213",
-                            TypeId = 2
+                            TypeId = "2"
                         },
                         new
                         {
-                            Id = 35,
+                            Id = "35",
                             LastVisitDate = new DateTime(2021, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Login = "katyaaytak",
                             Name = "Екатерина",
                             Password = "qwerty987",
-                            TypeId = 3
+                            TypeId = "3"
                         });
                 });
 
             modelBuilder.Entity("ACTEX.Models.UserType", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("AllowEdit")
                         .HasColumnType("INTEGER");
@@ -386,31 +385,31 @@ namespace ACTEX.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = "1",
                             AllowEdit = false,
                             Name = "Пользователь"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = "2",
                             AllowEdit = true,
                             Name = "Администратор"
                         },
                         new
                         {
-                            Id = 3,
+                            Id = "3",
                             AllowEdit = true,
                             Name = "Модератор"
                         },
                         new
                         {
-                            Id = 4,
+                            Id = "4",
                             AllowEdit = false,
                             Name = "Тестировщик"
                         },
                         new
                         {
-                            Id = 5,
+                            Id = "5",
                             AllowEdit = false,
                             Name = "Гость"
                         });

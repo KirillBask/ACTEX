@@ -2,6 +2,7 @@
 using ACTEX.Data;
 using ACTEX.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
@@ -18,28 +19,41 @@ namespace ACTEX.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers(
-            [FromQuery] int typeId = 0,
-            [FromQuery] string name = "")
+        [HttpPost("GetUsers")]
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers([FromBody] User filterModel)
         {
             IQueryable<User> users = _context.Users;
 
-            if (typeId > 0)
+            if (!string.IsNullOrEmpty(filterModel.Id))
             {
-                users = users.Where(u => u.TypeId == typeId);
+                users = users.Where(u => u.Id != null && u.Id.Contains(filterModel.Id));
             }
-
-            if (!string.IsNullOrEmpty(name))
+            if (!string.IsNullOrEmpty(filterModel.Login))
             {
-                users = users.Where(u => u.Name.Contains(name));
+                users = users.Where(u => u.Login != null && u.Login.Contains(filterModel.Login));
+            }
+            if (!string.IsNullOrEmpty(filterModel.Password))
+            {
+                users = users.Where(u => u.Password != null && u.Password.Contains(filterModel.Password));
+            }
+            if (!string.IsNullOrEmpty(filterModel.Name))
+            {
+                users = users.Where(u => u.Name != null && u.Name.Contains(filterModel.Name));
+            }
+            if (!string.IsNullOrEmpty(filterModel.TypeId))
+            {
+                users = users.Where(u => u.TypeId != null && u.TypeId.Contains(filterModel.TypeId));
+            }
+            if (filterModel.LastVisitDate != null)
+            {
+                users = users.Where(u => u.LastVisitDate == filterModel.LastVisitDate);
             }
 
             return await users.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<User>> GetUser(string id)
         {
             var user = await _context.Users.FindAsync(id);
 
@@ -51,17 +65,28 @@ namespace ACTEX.Controllers
             return user;
         }
 
-        [HttpPost]
+        [HttpPost("CreateUser")]
         public async Task<ActionResult<User>> CreateUser(User user)
         {
+            if (user == null)
+            {
+                return BadRequest();
+            }
+
+            var existingUser = await _context.Users.FindAsync(user.Id);
+            if (existingUser != null)
+            {
+                return Conflict();
+            }
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
+            return Ok(user);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, User user)
+        public async Task<IActionResult> UpdateUser(string id, User user)
         {
             if (id != user.Id)
             {
@@ -75,7 +100,7 @@ namespace ACTEX.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteUser(string id)
         {
             var user = await _context.Users.FindAsync(id);
 
