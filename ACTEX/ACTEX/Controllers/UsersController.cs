@@ -26,7 +26,7 @@ namespace ACTEX.Controllers
 
             if (!string.IsNullOrEmpty(filterModel.Id))
             {
-                users = users.Where(u => u.Id != null && u.Id.Contains(filterModel.Id));
+                users = users.Where(u => u.Id != null && u.Id == filterModel.Id);
             }
             if (!string.IsNullOrEmpty(filterModel.Login))
             {
