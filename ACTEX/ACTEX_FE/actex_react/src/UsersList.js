@@ -120,7 +120,14 @@ function UsersList() {
                 <td>{user.typeId}</td>
                 <td>{user.lastVisitDate}</td>
                 <tr>
-                  <button type="button" key={user.id} onClick={() => setSelectedUser(user)}>Edit</button>
+                  <button
+                    type="button"
+                    key={user.id}
+                    onClick={() => setSelectedUser(user)}
+                    className="filter-button"
+                  >
+                    Edit
+                  </button>
                 </tr>
               </tr>
             ))}

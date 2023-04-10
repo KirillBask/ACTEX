@@ -52,7 +52,7 @@ namespace ACTEX.Controllers
             return await users.ToListAsync();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("GetUser/{id}")]
         public async Task<ActionResult<User>> GetUser(string id)
         {
             var user = await _context.Users.FindAsync(id);
@@ -85,7 +85,7 @@ namespace ACTEX.Controllers
             return Ok(user);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("UpdateUser/{id}")]
         public async Task<IActionResult> UpdateUser(string id, User user)
         {
             if (id != user.Id)
@@ -99,7 +99,7 @@ namespace ACTEX.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("DeleteUser/{id}")]
         public async Task<IActionResult> DeleteUser(string id)
         {
             var user = await _context.Users.FindAsync(id);
